@@ -9,7 +9,7 @@ setTimeout( function(){
 }, 0);
 
 setTimeout( function(){
-    console.log('3 Timeout');    
+    console.log('3 Timeout ..');    
 }, 10);
 
 console.log('fin programa');
