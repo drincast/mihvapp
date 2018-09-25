@@ -7,7 +7,7 @@ app.get('/', (req, res) => {
   res.send('hello world!');
 });
 
-app.get('/dataPerson', (req, res) => {
+app.get('/dataCVPerson', (req, res) => {
   let response = undefined;
 
   firebase.data.person.once('value')
@@ -29,7 +29,7 @@ app.get('/dataPerson', (req, res) => {
   console.log('response', response);
 });
 
-app.listen(3000, () => {
+app.listen(3001, () => {
   console.log('example app listening on port 3000');
 });
 
