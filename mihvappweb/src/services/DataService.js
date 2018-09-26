@@ -5,13 +5,28 @@ class DataService{
     getDataCV(){
         try {
             let url = config.urlHvAppApi;
-            
-
             let response = undefined;
 
-            //axios.get(`${url}dataCVPerson/`)
+            // axios({
+            //     method: 'get',
+            //     url: `${url}dataCVPerson/`,
+            //     headers: {
+            //         'Content-Type': 'application/json, text/plain, */*'
+            //     },
+            //     withCredentials: false,
+            //     timeout: 5000
+            // })
+            // .then(resp => {
+            //     console.log(resp.data);
+            //     response = resp.data;                
+            // })
+            // .catch( err => {
+            //     console.log(err);
+            // });
 
-            return `${url}dataCVPerson/`;
+            response = 'hola';
+
+            return response;
         } catch (error) {
             console.log(error);
         }        
