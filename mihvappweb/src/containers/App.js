@@ -4,8 +4,6 @@ import DataService from '../services/DataService';
 import logo from '../logo.svg';
 import './App.css';
 
-let config = require('../configapp.json');
-
 let objDataService = new DataService();
 
 class App extends Component {
@@ -17,16 +15,6 @@ class App extends Component {
   }
   
   componentDidMount() {
-    // let dataR = objDataService.getDataCV();
-    // console.log(dataR);
-    // this.setState({
-    //   //dataCV: objDataService.getDataCV()
-    //   dataCV: dataR
-    // });
-    // console.log(this.state.dataCV);
-
-    //this.getData();
-
     objDataService.getDataCV()
     .then((response) => {      
       this.setState({        
@@ -35,45 +23,6 @@ class App extends Component {
     })
     .catch( err => console.log(err));
   }
-
-  // getData = async () => {    
-  //   //let url = `${config.urlHvAppApi}dataCVPerson/`;
-  //   let url = config.urlHvAppApi;
-
-  //   let miInit = { 
-  //                 method: 'GET',
-  //                 headers: new Headers(),
-  //                 mode: 'cors',
-  //                 cache: 'default' 
-  //                }
-
-  //   // fetch(url, {
-  //   //   method: 'GET',
-  //   //   headers: {
-  //   //     'Content-Type': 'application/json, text/plain, */*'
-  //   //   }, 
-  //   //   withCredentials: false
-  //   // })
-  //   fetch(url, miInit)
-  //   .then((response) => {
-  //     console.log('response', response);
-  //     response.json();
-  //   })
-  //   .then((responseJson) => {
-  //     //console.log('responseJson', JSON.stringify(responseJson));
-  //     // if(responseJson.libroResp === undefined){
-  //     //   console.log(responseJson.mensaje);
-  //     // }
-  //     // else{
-  //     //   this.setState({
-  //     //     dataCV: objDataService.getDataCV()
-  //     //   });
-  //     // }
-  //   })
-  //   .catch((error) => {
-  //     console.error(error);
-  //   });
-  // }
   
   //JSON.stringify(objDataService.getDataCV())
 
@@ -82,7 +31,6 @@ class App extends Component {
   }
 
   render() {
-    const { dataCV } = this.state;
 
     return (
       <div className="App">
@@ -93,7 +41,7 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        <div>{dataCV !== undefined ? dataCV.firtsName: false}</div>
+        <div>{this.state.dataCV !== undefined ? this.state.dataCV.firtsName: false}</div>
         <div>{}</div>
         <div onClick={this.test}>hola</div>
       </div>
