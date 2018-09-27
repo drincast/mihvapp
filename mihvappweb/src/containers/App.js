@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-import DataService from './services/DataService';
-import logo from './logo.svg';
+import DataService from '../services/DataService';
+import logo from '../logo.svg';
 import './App.css';
 
-let config = require('./configapp.json');
+let config = require('../configapp.json');
 
 let objDataService = new DataService();
 
@@ -26,6 +26,14 @@ class App extends Component {
     // console.log(this.state.dataCV);
 
     //this.getData();
+
+    objDataService.getDataCV()
+    .then((response) => {      
+      this.setState({        
+        dataCV: response.data
+      });
+    })
+    .catch( err => console.log(err));
   }
 
   // getData = async () => {    
@@ -74,6 +82,8 @@ class App extends Component {
   }
 
   render() {
+    const { dataCV } = this.state;
+
     return (
       <div className="App">
         <header className="App-header">
@@ -83,8 +93,8 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        <div>{this.state.dataCV !== undefined ? this.state.dataCV.firtsName: false}</div>
-        <div>{objDataService.getDataCV()}</div>
+        <div>{dataCV !== undefined ? dataCV.firtsName: false}</div>
+        <div>{}</div>
         <div onClick={this.test}>hola</div>
       </div>
     );
