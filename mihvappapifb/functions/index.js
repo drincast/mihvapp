@@ -50,6 +50,7 @@ app = express();
 
 //https://us-central1-mihv-333.cloudfunctions.net/addMessage?text=uppercasemetoo
 
+//https://us-central1-mihv-333.cloudfunctions.net/getPerson?id=p1
 exports.getPerson = functions.https.onRequest( (req, res) => {
     const id = req.query.id;
 
@@ -62,22 +63,22 @@ exports.getPerson = functions.https.onRequest( (req, res) => {
     let response = undefined;
 
     return data.once('value')
-    .then( (snapshot) => {
+    .then( (snapshot) => {cd 
         response = snapshot.val();
-        console.log(response);
+        //console.log(response);
         return res.status(200).send(response);
     })
     .catch( err => {
-        console.log("error servidor", err);
+        console.error("error servidor", err);
         return res.status(500).send(err)
     });
 });
 
-//https://us-central1-mihv-333.cloudfunctions.net/getPerson?id=p1
-
-app.get('/dataCVPerson', (req, res, next) => {    
+//https://us-central1-mihv-333.cloudfunctions.net/app/dataCVPerson?id=p1
+app.get('/dataCVPerson/:id', (req, res, next) => {    
     let response = undefined;
-    const id = req.query.id;
+    //const id = req.query.id;
+    const id = req.params.id;
 
     const data = admin.database().ref(`/person/${id}`);
   
@@ -92,7 +93,7 @@ app.get('/dataCVPerson', (req, res, next) => {
         return res.send(response);
     })
     .catch( (err) =>{
-        console.log("Error de server: ", err);
+        console.error("Error de server: ", err);
         res.header("Access-Control-Allow-Origin", "*");
         res.status(500).send("Error !!!, comunicarse con el administrador del servicio web");
     });

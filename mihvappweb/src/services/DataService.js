@@ -34,7 +34,7 @@ class DataService{
 
         return axios({
                     method: 'get',
-                    url: `${url}dataCVPerson/`,
+                    url: `${url}dataCVPerson/p1`,
                     headers: {
                         'Content-Type': 'application/json, text/plain, */*'
                     },
@@ -45,3 +45,7 @@ class DataService{
 }
 
 export default DataService;
+
+//http://localhost:3001
+//https://us-central1-mihv-333.cloudfunctions.net/app/dataCVPerson?id=p1
+//https://us-central1-mihv-333.cloudfunctions.net/getPerson?id=p1
