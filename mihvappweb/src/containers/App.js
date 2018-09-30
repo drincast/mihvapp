@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import DataService from '../services/DataService';
+import Header from './header';
 import logo from '../logo.svg';
 import './App.css';
 
@@ -13,17 +14,17 @@ class App extends Component {
       dataCV: undefined
     };
   }
-  
+
   componentDidMount() {
     objDataService.getDataCV()
-    .then((response) => {      
-      this.setState({        
+    .then((response) => {
+      this.setState({
         dataCV: response.data
       });
     })
     .catch( err => console.log(err));
   }
-  
+
   //JSON.stringify(objDataService.getDataCV())
 
   test = () => {
@@ -34,10 +35,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>          
-        </header>
+          <Header logo={logo}></Header>          
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
