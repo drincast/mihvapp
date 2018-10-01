@@ -1,3 +1,4 @@
 {
-    "urlHvAppApi": "https://us-central1-mihv-333.cloudfunctions.net/app/"
+    "urlHvAppApi": "https://us-central1-mihv-333.cloudfunctions.net/app/",
+    "urlHVAppApiLocal": "https://us-central1-mihv-333.cloudfunctions.net/app/"
 }

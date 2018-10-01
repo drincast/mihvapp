@@ -74,6 +74,24 @@ exports.getPerson = functions.https.onRequest( (req, res) => {
     });
 });
 
+//https://us-central1-mihv-333.cloudfunctions.net/getImgProfile/p1/perfil00002.png
+exports.getImgProfile = functions.https.onRequest( (req, res) => {
+    const id = req.params.id
+    const namefile = req.params.namefile
+
+    if (req.method === 'GET') {
+        const store = admin.storage();
+        //const storeRef = store.ref();
+
+        //const imgProfile = storeRef.child(`imgProfile/${id}/${namefile}`);
+
+        return res.status(200).send(store);
+    }
+    else{
+        return res.status(403).send('Forbidden!');
+    } 
+});
+
 //https://us-central1-mihv-333.cloudfunctions.net/app/dataCVPerson?id=p1
 app.get('/dataCVPerson/:id', (req, res, next) => {    
     let response = undefined;
