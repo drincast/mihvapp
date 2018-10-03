@@ -6,7 +6,7 @@ const Header = props => {
     const { logo } = props;
 
     const _getSrcImg = () => {        
-        console.log(props);
+        console.log("header", props);
     }
 
     return (
@@ -22,7 +22,9 @@ const Header = props => {
             <div class="desc">
                 <p>{props.legend}</p>
             </div>
-            
+            <div class="social">
+            {_getSrcImg()}
+            </div>
         </header>
     );
 }
