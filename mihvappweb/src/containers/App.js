@@ -100,6 +100,7 @@ class App extends Component {
                 </p>
                 <div>{this.state.dataCV !== undefined ? this.state.dataCV.firtsName: false}</div>
                 <div>{}</div>
+                <img src={logo} className="App-logo" alt="logo" />
                 <div onClick={this.test}>hola</div>
             </div>
         );

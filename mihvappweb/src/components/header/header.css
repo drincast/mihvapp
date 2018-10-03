@@ -1,8 +1,8 @@
 .secHeader {    
     background-color: #222;
-    height: 350px;
     padding: 20px 10px 10px 10px;
     color: white;
+    text-align: center;
 }
 
 .secHeader h1 {
@@ -26,7 +26,7 @@
 }
 
 .secHeader .divHeaderImgProfile {
-    height: 50%;
+    height: 200px;
 }
 
 .secHeader .divHeaderImgProfile img{
@@ -38,10 +38,6 @@
 }
 
 @media (min-width: 515px) {
-    .secHeader {
-        height: 330px;
-    }
-
     .secHeader h1 {
         font-size: 1.7em;
     }
@@ -54,10 +50,6 @@
 @media (min-width: 677px) {
     .secHeader .desc {
         width: 70%;
-    }
-
-    .secHeader .divHeaderImgProfile {
-        height: 53%;
     }
 }
 

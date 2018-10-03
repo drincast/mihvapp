@@ -22,7 +22,7 @@ const Header = props => {
             <div class="desc">
                 <p>{props.legend}</p>
             </div>
-            <img src={logo} className="App-logo" alt="logo" />
+            
         </header>
     );
 }
