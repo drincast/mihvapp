@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import DataService from '../services/DataService';
-import Header from './header';
+import Header from '../components/header/header';
 
 import firebase from '../utils/firebase';
 import configApp from '../configapp.json';
@@ -77,12 +77,24 @@ class App extends Component {
         //return res;
     }
 
+    getVisibleName() {        
+        return this.state.dataCV !== undefined ? this.state.dataCV.visibleName : ''
+    }
+
+    getYourself() {        
+        return this.state.dataCV !== undefined ? this.state.dataCV.nameYourselfProfessionally : ''
+    }
+
+    getLegend() {        
+        return this.state.dataCV !== undefined ? this.state.dataCV.legend : ''
+    }
+
 
     render() {
         const _urlImgProfile = this.getUrlImgProfile();
         return (
             <div className="App">
-                <Header logo={logo} altImg={this.getNamePerson()} urlImg={this.state.imgProfile}></Header>
+                <Header logo={logo} altImg={this.getNamePerson()} urlImg={this.state.imgProfile} vName={this.getVisibleName()} yourSelf={this.getYourself()} legend={this.getLegend()}></Header>
                 <p className="App-intro">
                     To get started, edit <code>src/App.js</code> and save to reload.
                 </p>

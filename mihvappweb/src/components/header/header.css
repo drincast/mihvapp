@@ -1,0 +1,75 @@
+.secHeader {    
+    background-color: #222;
+    height: 350px;
+    padding: 20px 10px 10px 10px;
+    color: white;
+}
+
+.secHeader h1 {
+    font-weight: 700;
+    font-size: 1.6em;
+    margin: 10px 0px 0px 0px;
+    text-transform: uppercase;    
+}
+
+.secHeader h2 {
+    font-family: sans-serif;
+    font-size: 1.2em;
+    font-weight: 200px;
+    margin: 0px 0px 10px 0px;
+}
+
+.secHeader .desc {
+    font-family: 'Bai Jamjuree', sans-serif;
+    margin: 0 auto;
+    width: 80%;
+}
+
+.secHeader .divHeaderImgProfile {
+    height: 50%;
+}
+
+.secHeader .divHeaderImgProfile img{
+    border-radius: 200px;
+    -moz-border-radius: 200px 200px 200px 200px;
+    -webkit-border-radius: 200px 200px 200px 200px;
+    border: 0px solid #fff;
+    height: 100%;
+}
+
+@media (min-width: 515px) {
+    .secHeader {
+        height: 330px;
+    }
+
+    .secHeader h1 {
+        font-size: 1.7em;
+    }
+    
+    .secHeader h2 {
+        font-size: 1.3em;
+    }
+}
+
+@media (min-width: 677px) {
+    .secHeader .desc {
+        width: 70%;
+    }
+
+    .secHeader .divHeaderImgProfile {
+        height: 53%;
+    }
+}
+
+@media (min-width: 677px) {
+    .secHeader .desc {
+        width: 60%;
+    }
+}
+
+@media (min-width: 1100px) {
+    .secHeader .desc {
+        width: 45%;
+    }
+}
+

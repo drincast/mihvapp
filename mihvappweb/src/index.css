@@ -1,5 +1,10 @@
+/*@import url('https://fonts.googleapis.com/css?family=Roboto');*/
+
+@import url('https://fonts.googleapis.com/css?family=Abel|Anton|Bai+Jamjuree|Indie+Flower|Mali|Niramit|Open+Sans|Roboto|Shadows+Into+Light');
+
+
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
 }

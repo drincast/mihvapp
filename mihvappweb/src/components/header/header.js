@@ -1,22 +1,28 @@
 import React from 'react';
 
+import './header.css'
+
 const Header = props => {
-    const { logo, altImg } = props;
+    const { logo } = props;
 
     const _getSrcImg = () => {        
         console.log(props);
     }
 
     return (
-        <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
+        <header className="secHeader">
             <div className="divHeaderImgProfile" onClick={_getSrcImg}>
                 <img className="imgHeaderImgProfile" 
                     alt={props.altImg}
                     src={props.urlImg}>
                 </img>
             </div>
-            <h1 className="App-title">Welcome to React</h1>
+            <h1>{props.vName}</h1>
+            <h2>{props.yourSelf}</h2>
+            <div class="desc">
+                <p>{props.legend}</p>
+            </div>
+            <img src={logo} className="App-logo" alt="logo" />
         </header>
     );
 }
