@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { observer } from 'mobx-react'
+// import DevTools from 'mobx-react-devtools';
 
 import DataService from '../services/DataService';
+import objStoreStates from '../storestates';
 import Header from '../components/header/header';
 
 import firebase from '../utils/firebase';
@@ -26,6 +29,8 @@ class App extends Component {
                 dataCV: response.data
             });
             
+            objStoreStates.setSocials(this.state.dataCV.websites);
+
             return firebase.storageRef.child(`imgProfile/${configApp.defIdPerson}/${this.state.dataCV.imgProfile.url}`).getDownloadURL();            
         })
         .then(url => {
@@ -89,9 +94,16 @@ class App extends Component {
         return this.state.dataCV !== undefined ? this.state.dataCV.legend : ''
     }
 
+    getStateSocials(){
+        if (this.state.dataCV !== undefined) {
+            
+        }
+    }
+
 
     render() {
         const _urlImgProfile = this.getUrlImgProfile();
+        
         return (
             <div className="App">
                 <Header logo={logo} altImg={this.getNamePerson()} urlImg={this.state.imgProfile} vName={this.getVisibleName()} yourSelf={this.getYourself()} legend={this.getLegend()}></Header>
@@ -102,9 +114,10 @@ class App extends Component {
                 <div>{}</div>
                 <img src={logo} className="App-logo" alt="logo" />
                 <div onClick={this.test}>hola</div>
+                {this.getStateSocials()}
             </div>
         );
     }
 }
 
-export default App;
+export default observer(App);
