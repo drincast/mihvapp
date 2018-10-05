@@ -23,22 +23,25 @@ class App extends Component {
     } 
 
     componentWillMount() {
-        objDataService.getDataCV()
-        .then((response) => {
-            this.setState({
-                dataCV: response.data
-            });
-            
-            objStoreStates.setSocials(this.state.dataCV.websites);
+        //console.log("ver ant", this.state.dataCV);
+        //if(this.state.dataCV === undefined || this.state.dataCV === null){
+            objDataService.getDataCV()
+            .then((response) => {
+                this.setState({
+                    dataCV: response.data
+                });
+                
+                objStoreStates.setSocials(this.state.dataCV.websites);
 
-            return firebase.storageRef.child(`imgProfile/${configApp.defIdPerson}/${this.state.dataCV.imgProfile.url}`).getDownloadURL();            
-        })
-        .then(url => {
-            this.setState({
-                imgProfile: url                        
-            });
-        })        
-        .catch( err => console.log(err));
+                return firebase.storageRef.child(`imgProfile/${configApp.defIdPerson}/${this.state.dataCV.imgProfile.url}`).getDownloadURL();            
+            })
+            .then(url => {
+                this.setState({
+                    imgProfile: url                        
+                });
+            })        
+            .catch( err => console.log(err));
+        //}
     }
 
     //JSON.stringify(objDataService.getDataCV())
@@ -63,7 +66,7 @@ class App extends Component {
                         //console.log(this.state.dataCV);
                         firebase.storageRef.child(`imgProfile/${configApp.defIdPerson}/${this.state.dataCV.imgProfile.url}`).getDownloadURL()
                         .then( (url) => {
-                            console.log(url);
+                            //console.log(url);
                             return url;
                         })
                         .catch(err => console.log(err));
@@ -102,7 +105,7 @@ class App extends Component {
 
 
     render() {
-        const _urlImgProfile = this.getUrlImgProfile();
+        //const _urlImgProfile = this.getUrlImgProfile();
         
         return (
             <div className="App">

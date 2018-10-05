@@ -19,10 +19,10 @@ const Header = props => {
             </div>
             <h1>{props.vName}</h1>
             <h2>{props.yourSelf}</h2>
-            <div class="desc">
+            <div className="desc">
                 <p>{props.legend}</p>
             </div>
-            <div class="social">
+            <div className="social">
             {_getSrcImg()}
             </div>
         </header>
