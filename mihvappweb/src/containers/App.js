@@ -23,32 +23,25 @@ class App extends Component {
     } 
 
     componentWillMount() {
-        //console.log("ver ant", this.state.dataCV);
-        //if(this.state.dataCV === undefined || this.state.dataCV === null){
-            objDataService.getDataCV()
-            .then((response) => {
-                this.setState({
-                    dataCV: response.data
-                });
-                
-                objStoreStates.setSocials(this.state.dataCV.websites);
+        objDataService.getDataCV()
+        .then((response) => {
+            this.setState({
+                dataCV: response.data
+            });
+            
+            objStoreStates.setSocials(this.state.dataCV.websites);
 
-                return firebase.storageRef.child(`imgProfile/${configApp.defIdPerson}/${this.state.dataCV.imgProfile.url}`).getDownloadURL();            
-            })
-            .then(url => {
-                this.setState({
-                    imgProfile: url                        
-                });
-            })        
-            .catch( err => console.log(err));
-        //}
+            return firebase.storageRef.child(`imgProfile/${configApp.defIdPerson}/${this.state.dataCV.imgProfile.url}`).getDownloadURL();            
+        })
+        .then(url => {
+            this.setState({
+                imgProfile: url                        
+            });
+        })        
+        .catch( err => console.log(err));
     }
 
     //JSON.stringify(objDataService.getDataCV())
-
-    test = () => {
-        alert("hola");
-    }
 
     getNamePerson() {
         return this.state.dataCV !== undefined ? this.state.dataCV.firtsName : "user";
@@ -97,19 +90,13 @@ class App extends Component {
         return this.state.dataCV !== undefined ? this.state.dataCV.legend : ''
     }
 
-    getStateSocials(){
-        if (this.state.dataCV !== undefined) {
-            
-        }
-    }
-
-
     render() {
         //const _urlImgProfile = this.getUrlImgProfile();
         
         return (
             <div className="App">
-                <Header logo={logo} altImg={this.getNamePerson()} urlImg={this.state.imgProfile} vName={this.getVisibleName()} yourSelf={this.getYourself()} legend={this.getLegend()}></Header>
+                <Header logo={logo} altImg={this.getNamePerson()} urlImg={this.state.imgProfile} 
+                    vName={this.getVisibleName()} yourSelf={this.getYourself()} legend={this.getLegend()}></Header>
                 <p className="App-intro">
                     To get started, edit <code>src/App.js</code> and save to reload.
                 </p>
@@ -117,7 +104,6 @@ class App extends Component {
                 <div>{}</div>
                 <img src={logo} className="App-logo" alt="logo" />
                 <div onClick={this.test}>hola</div>
-                {this.getStateSocials()}
             </div>
         );
     }

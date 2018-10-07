@@ -1,5 +1,6 @@
 import React from 'react';
 
+import SecSocials from '../secsocials';
 import './header.css'
 
 const Header = props => {
@@ -25,6 +26,7 @@ const Header = props => {
             <div className="social">
             {_getSrcImg()}
             </div>
+            <SecSocials></SecSocials>
         </header>
     );
 }
