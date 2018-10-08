@@ -1,6 +1,6 @@
 import React from 'react';
 
-import SecSocials from '../secsocials';
+import SecSocials from '../secsocials/secsocials';
 import './header.css'
 
 const Header = props => {

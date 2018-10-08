@@ -1,0 +1,9 @@
+.secSocials ul li{    
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.secSocials ul li a:link {
+    color: #fff;    
+    text-decoration: none;
+}
