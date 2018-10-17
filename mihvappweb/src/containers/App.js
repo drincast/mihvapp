@@ -5,6 +5,7 @@ import { observer } from 'mobx-react'
 import DataService from '../services/DataService';
 import objStoreStates from '../storestates';
 import Header from '../components/header/header';
+import BulletinBoard from '../components/bulletinboard/bulletinboard';
 
 import firebase from '../utils/firebase';
 import configApp from '../configapp.json';
@@ -90,13 +91,18 @@ class App extends Component {
         return this.state.dataCV !== undefined ? this.state.dataCV.legend : ''
     }
 
+    getSkills(){
+        return this.state.dataCV !== undefined ? this.state.dataCV.skills : null
+    }
+
     render() {
         //const _urlImgProfile = this.getUrlImgProfile();
         
         return (
             <div className="App">
                 <Header logo={logo} altImg={this.getNamePerson()} urlImg={this.state.imgProfile} 
-                    vName={this.getVisibleName()} yourSelf={this.getYourself()} legend={this.getLegend()}></Header>
+                    vName={this.getVisibleName()} yourSelf={this.getYourself()} legend={this.getLegend()} />
+                <BulletinBoard data={this.getSkills()}/>
                 <p className="App-intro">
                     To get started, edit <code>src/App.js</code> and save to reload.
                 </p>

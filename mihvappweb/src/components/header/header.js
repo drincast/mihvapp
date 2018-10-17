@@ -23,9 +23,9 @@ const Header = props => {
             <div className="desc">
                 <p>{props.legend}</p>
             </div>
-            <div className="social">
+            {/* <div className="social">
             {_getSrcImg()}
-            </div>
+            </div> */}
             <SecSocials></SecSocials>
         </header>
     );
