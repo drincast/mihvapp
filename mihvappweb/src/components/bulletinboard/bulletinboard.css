@@ -1,3 +1,31 @@
-.secBulletin{
+.bboard{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.bbulletin{
+    /* padding: 1em; */
+    margin: 1em;
     text-align: center;
+    width: 80%;
+}
+
+@media (min-width: 601px) {
+    .bbulletin{
+        /* padding: 1em; */
+        margin: 2em;
+        text-align: center;
+        width: 38%;
+    }
+}
+
+@media (min-width: 1051px) {
+    .bbulletin{
+        /* padding: 1em; */
+        margin: 2em 3em;
+        text-align: center;
+        width: 35%;
+    }
 }

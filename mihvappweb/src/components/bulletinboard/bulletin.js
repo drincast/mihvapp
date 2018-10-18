@@ -28,7 +28,7 @@ const Bulletin = props => {
     }
 
     return(
-        <div className="secBulletin">
+        <div className="bbulletin">
             <h2 className="title">{ title }</h2>
             <p>{_getDrawLevel()}</p>
             <p>{ description }</p>

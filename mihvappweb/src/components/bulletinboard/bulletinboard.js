@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 import Bulletin from './bulletin';
 
@@ -32,9 +32,9 @@ const BulletinBoard = props => {
     //_getBulletins()    
 
     return(
-        <Fragment>
+        <div className="bboard">
             {_getBulletins()}
-        </Fragment>
+        </div>
     )
 }
 
