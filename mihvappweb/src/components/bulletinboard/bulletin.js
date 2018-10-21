@@ -3,7 +3,7 @@ import React from 'react';
 import './bulletinboard.css';
 
 const Bulletin = props => {
-    const { description, level, items, title} = props;
+    const { description, level, items, title, animation} = props;
 
     const _getListItems = () => {
         let list = [];
@@ -17,22 +17,34 @@ const Bulletin = props => {
     }
 
     const _getDrawLevel = () => {
-        let starts = "";
+        let stars = "";
         let intLevel = parseInt(level);
+        let lstStars = [];
         for(let i = 1; i <= intLevel; i++){
-            starts = starts + "*" + " ";
+            //starts = starts + "*" + " ";
+            lstStars.push(<i className='fa fa-star'></i>)
         }
-        starts = starts.substr(0, starts.length - 1);
+        //starts = starts.substr(0, starts.length - 1);
 
-        return starts;
+        //return starts;
+        return lstStars;
+    }
+
+    const classBulletin = () => {
+        let res = 'bbulletin';
+        if(animation === true){
+            res = 'bbulletin bbulletinAnimation';
+        }
+
+        return res;
     }
 
     return(
-        <div className="bbulletin">
+        <div className={classBulletin()}>
             <h2 className="title">{ title }</h2>
-            <p>{_getDrawLevel()}</p>
+            <p className='level'>{_getDrawLevel()}</p>
             <p>{ description }</p>
-            <ul>
+            <ul className="attributes">
                 {
                     _getListItems()
                 }

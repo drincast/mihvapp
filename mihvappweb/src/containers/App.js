@@ -102,14 +102,12 @@ class App extends Component {
             <div className="App">
                 <Header logo={logo} altImg={this.getNamePerson()} urlImg={this.state.imgProfile} 
                     vName={this.getVisibleName()} yourSelf={this.getYourself()} legend={this.getLegend()} />
-                <BulletinBoard data={this.getSkills()}/>
-                <p className="App-intro">
-                    To get started, edit <code>src/App.js</code> and save to reload.
-                </p>
-                <div>{this.state.dataCV !== undefined ? this.state.dataCV.firtsName: false}</div>
+                <BulletinBoard data={this.getSkills()} animation={true}/>
+                
+                {/* <div>{this.state.dataCV !== undefined ? this.state.dataCV.firtsName: false}</div>
                 <div>{}</div>
                 <img src={logo} className="App-logo" alt="logo" />
-                <div onClick={this.test}>hola</div>
+                <div onClick={this.test}>hola</div> */}
             </div>
         );
     }
