@@ -6,13 +6,16 @@ import './bulletinboard.css';
 
 const BulletinBoard = props => {
     const bulletins = props.data;
+    const {animation} = props;
 
     const _getBulletins = () => {
         let listBulletins = []
         if(bulletins !== undefined && bulletins !== null){
             for(let item in bulletins){
                 listBulletins.push(
-                <Bulletin description={bulletins[item].description} 
+                <Bulletin animation={animation}
+                        description={bulletins[item].description}
+                        key={item}
                         level={bulletins[item].level}
                         items={bulletins[item].items}
                         title={bulletins[item].name} />
