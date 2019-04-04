@@ -8,11 +8,11 @@
     "firebase": "^5.7.0",
     "mobx": "^5.5.0",
     "mobx-react": "^5.2.8",
-    "react": "^16.7.0",
+    "react": "^16.8.6",
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.7.0",
     "react-fontawesome": "^1.6.1",
-    "react-scripts": "^2.1.1"
+    "react-scripts": "^2.1.8"
   },
   "scripts": {
     "start": "SET PORT=3003 && react-scripts start",
