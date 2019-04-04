@@ -7,7 +7,7 @@ En el desarrollo de la aplicación, se contara con la parte web desarrollada en 
 
 La aplicación cliente (web en reactjs), se conectara en el momento a firebase al componente storage para la visualización de imagenes almacenadas.
 
-Para ver la pagina hosteada en firebase sigue este link = [mihvappweb](https://mihv-333.firebaseapp.com)firebase deploy
+Para ver la pagina hosteada en firebase sigue este link = [mihvappweb](https://mihv-333.firebaseapp.com) firebase deploy
 
 ## Contenido del proyecto
 
