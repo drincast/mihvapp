@@ -32,6 +32,21 @@ const SecSocials = props => {
                         </li>
                     )
                     break;
+                case "EMAIL":                    
+                    for (let j in lstSocials[i]) {
+                        if ('url' === j){                             
+                            url = lstSocials[i][j];
+                            break;
+                        }
+                    }
+                    lstLi.push(
+                        <li key={i}>
+                            <a href={url} target="_blank">
+                                <i className="fas fa-envelope fa-2x" name={i}></i>
+                            </a>
+                        </li>
+                    )
+                    break;
                 case "GITHUB":
                     for (let j in lstSocials[i]) {
                         if ('url' === j){                             
