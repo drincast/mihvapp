@@ -1,12 +1,14 @@
 import * as firebase from 'firebase';
 
+const configFirebase = require("./configfirebase.json");
+
 let cfgFB = {
-    apiKey: "AIzaSyC_ijNJZOAxb96RxBfa-ULGEBXcmUlY8NE",
-    authDomain: "mihv-333.firebaseapp.com",
-    databaseURL: "https://mihv-333.firebaseio.com",
-    projectId: "mihv-333",
-    storageBucket: "mihv-333.appspot.com",
-    messagingSenderId: "127491763235"
+    apiKey: configFirebase.apiKey,
+    authDomain: configFirebase.authDomain,
+    databaseURL: configFirebase.databaseURL,
+    projectId: configFirebase.projectId,
+    storageBucket: configFirebase.storageBucket,
+    messagingSenderId: configFirebase.messagingSenderId
 };
 
 firebase.initializeApp(cfgFB);
