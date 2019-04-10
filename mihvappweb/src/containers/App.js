@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { observer } from 'mobx-react'
 // import DevTools from 'mobx-react-devtools';
+import { Link, Redirect , Route, Switch } from 'react-router-dom';
 
 import DataService from '../services/DataService';
 import objStoreStates from '../storestates';
 import Header from '../components/header/header';
 import BulletinBoard from '../components/bulletinboard/bulletinboard';
+import Courses from '../components/courses/courses';
 
 import firebase from '../utils/firebase';
 import configApp from '../configapp.json';
@@ -13,6 +15,14 @@ import logo from '../logo.svg';
 import './App.css';
 
 let objDataService = new DataService();
+
+// const routes_ = (
+//     <div>
+//         <Route exact component={Courses} path='/courses'></Route>
+//         {/* <Route path='/bulletinboar' component={BulletinBoard}></Route> */}
+//         <Route path='/bulletinboar' component={BulletinBoard}></Route>
+//     </div>
+// )
 
 class App extends Component {  
     constructor(props){
@@ -94,7 +104,7 @@ class App extends Component {
     getSkills(){
         return this.state.dataCV !== undefined ? this.state.dataCV.skills : null
     }
-
+    
     render() {
         //const _urlImgProfile = this.getUrlImgProfile();
         
@@ -102,7 +112,22 @@ class App extends Component {
             <div className="App">
                 <Header logo={logo} altImg={this.getNamePerson()} urlImg={this.state.imgProfile} 
                     vName={this.getVisibleName()} yourSelf={this.getYourself()} legend={this.getLegend()} />
-                <BulletinBoard data={this.getSkills()} animation={true}/>
+                <div>
+                    <Link to="/courses">Ultimos Cursos</Link>
+                    <Link to="/bulletinboar">bullitin</Link>
+                </div>
+                <div>
+                    {/* {routes_} */}
+                    <Switch>
+                        <Route path='/bulletinboar' render={
+                            () => <BulletinBoard data={this.getSkills()} animation={true}/>
+                            }>
+                        </Route>
+                        <Route component={Courses} path='/courses'></Route>                    
+                        <Redirect to="/bulletinboar"></Redirect>
+                    </Switch>
+                </div>                
+                {/* <BulletinBoard data={this.getSkills()} animation={true}/> */}
                 
                 {/* <div>{this.state.dataCV !== undefined ? this.state.dataCV.firtsName: false}</div>
                 <div>{}</div>

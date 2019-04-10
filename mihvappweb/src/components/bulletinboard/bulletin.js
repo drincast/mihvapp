@@ -22,7 +22,7 @@ const Bulletin = props => {
         let lstStars = [];
         for(let i = 1; i <= intLevel; i++){
             //starts = starts + "*" + " ";
-            lstStars.push(<i className='fa fa-star'></i>)
+            lstStars.push(<i key={i} className='fa fa-star'></i>)
         }
         //starts = starts.substr(0, starts.length - 1);
 
