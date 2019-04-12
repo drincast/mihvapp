@@ -25,7 +25,7 @@ const SecSocials = props => {
                     }
                     lstLi.push(
                         <li key={i}>
-                            <a href={url} target="_blank">
+                            <a href={url} rel="noopener noreferrer" target="_blank">
                                 {/* <FontAwesome className="fa fa-blogger" name={i}></FontAwesome> */}
                                 <i className="fab fa-blogger fa-2x" name={i}></i>
                             </a>
@@ -41,7 +41,7 @@ const SecSocials = props => {
                     }
                     lstLi.push(
                         <li key={i}>
-                            <a href={url} target="_blank">
+                            <a href={url} rel="noopener noreferrer" target="_blank">
                                 <i className="fas fa-envelope fa-2x" name={i}></i>
                             </a>
                         </li>
@@ -56,7 +56,7 @@ const SecSocials = props => {
                     }
                     lstLi.push(
                         <li key={i}>
-                            <a href={url} target="_blank">
+                            <a href={url} rel="noopener noreferrer" target="_blank">
                                 <i className="fab fa-github fa-2x" name={i}></i>
                             </a>
                         </li>
@@ -71,7 +71,7 @@ const SecSocials = props => {
                     }
                     lstLi.push(
                         <li key={i}>
-                            <a href={url} target="_blank">
+                            <a href={url} rel="noopener noreferrer" target="_blank">
                                 <i className="fab fa-twitter fa-2x" name={i}></i>
                             </a>
                         </li>

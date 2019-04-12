@@ -104,6 +104,10 @@ class App extends Component {
     getSkills(){
         return this.state.dataCV !== undefined ? this.state.dataCV.skills : null
     }
+
+    getCourses(){
+        return this.state.dataCV !== undefined ? this.state.dataCV.education.courses : null
+    }
     
     render() {
         //const _urlImgProfile = this.getUrlImgProfile();
@@ -112,18 +116,23 @@ class App extends Component {
             <div className="App">
                 <Header logo={logo} altImg={this.getNamePerson()} urlImg={this.state.imgProfile} 
                     vName={this.getVisibleName()} yourSelf={this.getYourself()} legend={this.getLegend()} />
-                <div>
-                    <Link to="/courses">Ultimos Cursos</Link>
-                    <Link to="/bulletinboar">bullitin</Link>
-                </div>
+                <nav className="navMenu">
+                    <Link to="/bulletinboar">Skills</Link>
+                    <Link to="/courses">Cursos</Link>
+                </nav>
                 <div>
                     {/* {routes_} */}
                     <Switch>
                         <Route path='/bulletinboar' render={
-                            () => <BulletinBoard data={this.getSkills()} animation={true}/>
+                            () => <BulletinBoard data={this.getSkills()} animation={true} type="skill"/>
                             }>
                         </Route>
-                        <Route component={Courses} path='/courses'></Route>                    
+                        {/* <Route component={Courses} path='/courses'></Route> */}
+                        <Route path='/Courses' render={
+                            () => <BulletinBoard data={this.getCourses()} type="courses"/>
+                            }>
+                        </Route>
+                        {/* <Redirect to="/bulletinboar"></Redirect> */}
                         <Redirect to="/bulletinboar"></Redirect>
                     </Switch>
                 </div>                

@@ -5,22 +5,31 @@ import Bulletin from './bulletin';
 import './bulletinboard.css';
 
 const BulletinBoard = props => {
+    const {type} = props;
     const bulletins = props.data;
     const {animation} = props;
 
     const _getBulletins = () => {
         let listBulletins = []
         if(bulletins !== undefined && bulletins !== null){
+            let data_ = {};
             for(let item in bulletins){
+                data_ = {
+                    certificate: bulletins[item].certificate,
+                    description: bulletins[item].description !== undefined ? bulletins[item].description : undefined,
+                    endDate: bulletins[item].endDate !== undefined ? bulletins[item].endDate : undefined,
+                    level: bulletins[item].level !== undefined ? bulletins[item].level : undefined,
+                    institute: bulletins[item].institute, 
+                    items: bulletins[item].items,
+                    title: bulletins[item].name
+                }                
                 listBulletins.push(
-                <Bulletin animation={animation}
-                        description={bulletins[item].description}
+                    <Bulletin animation={animation}
+                        data={data_}
                         key={item}
-                        level={bulletins[item].level}
-                        items={bulletins[item].items}
-                        title={bulletins[item].name} />
+                        type={type} />
                 );                
-                console.log(item, bulletins[item]);
+                //console.log(item, bulletins[item]);
             }
 
             return listBulletins;

@@ -1,13 +1,23 @@
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+    animation: App-logo-spin infinite 20s linear;
+    height: 80px;
 }
 
 .App-intro {
-  font-size: large;
+    font-size: large;
+}
+
+.navMenu {
+    background-color:gainsboro;
+    padding: 0.5em 0.5em;
+}
+
+.navMenu a{
+    margin-left: 0.5em;
+    margin-right: 0.5em;
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
