@@ -51,6 +51,7 @@ app = express();
 //https://us-central1-mihv-333.cloudfunctions.net/addMessage?text=uppercasemetoo
 
 //https://us-central1-mihv-333.cloudfunctions.net/getPerson?id=p1
+//http://localhost:5000/mihv-333/us-central1/getPerson?id=p1
 exports.getPerson = functions.https.onRequest( (req, res) => {
     const id = req.query.id;
 
@@ -63,7 +64,7 @@ exports.getPerson = functions.https.onRequest( (req, res) => {
     let response = undefined;
 
     return data.once('value')
-    .then( (snapshot) => {cd 
+    .then( (snapshot) => { 
         response = snapshot.val();
         //console.log(response);
         return res.status(200).send(response);
