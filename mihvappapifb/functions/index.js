@@ -75,6 +75,32 @@ exports.getPerson = functions.https.onRequest( (req, res) => {
     });
 });
 
+//Llamado para aplicaciones como una app en unity se usa onCall
+exports.getPerson02 = functions.https.onCall((data, context) => {
+    const id = data.id;
+    // const uid = context.auth.uid || null;
+    // const name = context.auth.token.name || null;
+    // const picture = context.auth.token.picture || null;
+    // const email = context.auth.token.email || null;
+
+    const dataDB = admin.database().ref(`/person/${id}`);
+
+    let response = undefined;
+
+    return dataDB.once('value')
+    .then( (snapshot) => { 
+        response = snapshot.val();
+        //console.log(response);
+        //return res.status(200).send(response);
+        return {name: response.firtsName};
+    })
+    .catch( err => {
+        console.error("error servidor", err);
+        //return res.status(500).send(err)
+        throw new functions.https.HttpsError('unknown', err.message, err);
+    });
+});
+
 //https://us-central1-mihv-333.cloudfunctions.net/getImgProfile/p1/perfil00002.png
 exports.getImgProfile = functions.https.onRequest( (req, res) => {
     const id = req.params.id
