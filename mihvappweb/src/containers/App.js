@@ -49,7 +49,7 @@ class App extends Component {
                 imgProfile: url                        
             });
         })        
-        .catch( err => console.log(err));
+        .catch( err => console.error(err) );
     }
 
     //JSON.stringify(objDataService.getDataCV())
