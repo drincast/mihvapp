@@ -1,4 +1,6 @@
-import * as firebase from 'firebase';
+// import * as firebase from 'firebase';
+import { initializeApp } from 'firebase/app';
+import { getDatabase } from "firebase/database";
 
 const configFirebase = require("./configfirebase.json");
 
@@ -11,17 +13,19 @@ let cfgFB = {
     messagingSenderId: configFirebase.messagingSenderId
 };
 
-firebase.initializeApp(cfgFB);
+const app = initializeApp(cfgFB);
 
 //const database = firebase.database();
-const storage = firebase.storage();
+//const storage = firebase.storage();
+const storage = getDatabase(app);
 
 // const platillos = database.ref('alimentos/');
 // const bebidas = database.ref('bebidas/');
-const storageRef = storage.ref();
+//const storageRef = storage.ref();
 
 const data = {
-    storageRef
+    //storageRef
+    storage
 };
 
 export default data;
