@@ -39,17 +39,35 @@ class App extends Component {
             this.setState({
                 dataCV: response.data
             });
-            
-            objStoreStates.setSocials(this.state.dataCV.websites);
 
-            return firebase.storageRef.child(`imgProfile/${configApp.defIdPerson}/${this.state.dataCV.imgProfile.url}`).getDownloadURL();            
+            objStoreStates.setSocials(this.state.dataCV.websites);
+            // return firebase.storageRef.child(`imgProfile/${configApp.defIdPerson}/${this.state.dataCV.imgProfile.url}`).getDownloadURL();
+            return firebase.storage.child(`imgProfile/${configApp.defIdPerson}/${this.state.dataCV.imgProfile.url}`).getDownloadURL();
         })
         .then(url => {
             this.setState({
                 imgProfile: url                        
             });
         })        
-        .catch( err => console.error(err) );
+        .catch( async err => {
+            let theData = await firebase.getData('p1').then(data => { 
+                console.log('laData', data);
+                return data; 
+            });
+
+            this.setState({
+                dataCV: theData
+            });
+            objStoreStates.setSocials(theData.websites);
+            console.log('estado', this.state.dataCV.lastName, this.state.dataCV.imgProfile.url);
+            console.log(firebase.storage, `imgProfile/${configApp.defIdPerson}/${this.state.dataCV.imgProfile.url}`);
+            
+            firebase.getImage(`imgProfile/${configApp.defIdPerson}/${this.state.dataCV.imgProfile.url}`);
+
+
+            // return firebase.storageRef(`imgProfile/${configApp.defIdPerson}/${this.state.dataCV.imgProfile.url}`).getDownloadURL();
+            // console.error(err);
+        });
     }
 
     //JSON.stringify(objDataService.getDataCV())
