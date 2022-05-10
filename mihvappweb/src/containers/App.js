@@ -42,7 +42,6 @@ class App extends Component {
 
             objStoreStates.setSocials(this.state.dataCV.websites);
             // return firebase.storageRef.child(`imgProfile/${configApp.defIdPerson}/${this.state.dataCV.imgProfile.url}`).getDownloadURL();
-            return firebase.storage.child(`imgProfile/${configApp.defIdPerson}/${this.state.dataCV.imgProfile.url}`).getDownloadURL();
         })
         .then(url => {
             this.setState({
@@ -62,7 +61,7 @@ class App extends Component {
             console.log('estado', this.state.dataCV.lastName, this.state.dataCV.imgProfile.url);
             console.log(firebase.storage, `imgProfile/${configApp.defIdPerson}/${this.state.dataCV.imgProfile.url}`);
             
-            firebase.getImage(`imgProfile/${configApp.defIdPerson}/${this.state.dataCV.imgProfile.url}`);
+            //firebase.getImage(`imgProfile/${configApp.defIdPerson}/${this.state.dataCV.imgProfile.url}`);
 
 
             // return firebase.storageRef(`imgProfile/${configApp.defIdPerson}/${this.state.dataCV.imgProfile.url}`).getDownloadURL();
