@@ -19,7 +19,8 @@ const app = initializeApp(cfgFB);
 //const database = firebase.database();
 //const storage = firebase.storage();
 const storage = getStorage();
-const storageRef = sref;
+const storageRef = sref(storage, 'imgProfile');
+const imgPerfil = sref(storageRef, 'p1/rd300x300.png');
 const database = getDatabase(app);
 
 // const platillos = database.ref('alimentos/');
@@ -60,24 +61,41 @@ function getData(idPerson) {
 //getData('p1');
 
 function getImage(path) {
-    return getDownloadURL(sref(storage, path)).then((url) => {
+    return getDownloadURL(imgPerfil).then((url) => {
         console.log('url', url);
 
         // This can be downloaded directly:
-        const xhr = new XMLHttpRequest();
-        xhr.responseType = 'blob';
-        xhr.onload = (event) => {
-            const blob = xhr.response;
-        };
-        xhr.open('GET', url);
-        xhr.send();
+        // const xhr = new XMLHttpRequest();
+        // xhr.responseType = 'blob';
+        // xhr.onload = (event) => {
+        //     const blob = xhr.response;
+        // };
+        // xhr.open('GET', url);
+        // xhr.send();
+
+        console.log('utils-firebasels', url);
 
         return url;
     })
+    // return getDownloadURL(sref(storage, path)).then((url) => {
+    //     console.log('url', url);
+
+    //     // This can be downloaded directly:
+    //     const xhr = new XMLHttpRequest();
+    //     xhr.responseType = 'blob';
+    //     xhr.onload = (event) => {
+    //         const blob = xhr.response;
+    //     };
+    //     xhr.open('GET', url);
+    //     xhr.send();
+
+    //     return url;
+    // })
 }
 
 const data = {
     // storageRef,
+    imgPerfil,
     getData,
     getImage,
     storage,

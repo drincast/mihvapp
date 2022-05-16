@@ -58,8 +58,20 @@ class App extends Component {
                 dataCV: theData
             });
             objStoreStates.setSocials(theData.websites);
-            console.log('estado', this.state.dataCV.lastName, this.state.dataCV.imgProfile.url);
+            //console.log('estado', this.state.dataCV.lastName, this.state.dataCV.imgProfile.url);
+            console.log('estado', this.state);
             console.log(firebase.storage, `imgProfile/${configApp.defIdPerson}/${this.state.dataCV.imgProfile.url}`);
+
+            // this.setState({
+            //     imgProfile: 'https://drive.google.com/UC?export=view&id=1OZ09TOC2vzxCE9W-raL8howVBWnFK_a6'
+            // })
+            //https://drive.google.com/file/d/1OZ09TOC2vzxCE9W-raL8howVBWnFK_a6/view?usp=sharing
+            const urlImgP = await firebase.getImage('p1');
+
+            this.setState({
+                imgProfile: urlImgP
+            });
+
             
             //firebase.getImage(`imgProfile/${configApp.defIdPerson}/${this.state.dataCV.imgProfile.url}`);
 
@@ -72,7 +84,9 @@ class App extends Component {
     //JSON.stringify(objDataService.getDataCV())
 
     getNamePerson() {
+        console.log('--> getNamePerson');
         return this.state.dataCV !== undefined ? this.state.dataCV.firtsName : "user";
+
     }
 
     getUrlImgProfile() {
