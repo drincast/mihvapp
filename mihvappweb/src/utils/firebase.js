@@ -27,7 +27,6 @@ const database = getDatabase(app);
 // const bebidas = database.ref('bebidas/');
 // const storageRef = storage.ref();
 
-console.log('firebase');
 // const starCountRef = ref(storage, 'person/p1');
 // onValue(starCountRef, (snapshot) => {
 //     const data = snapshot.val();
@@ -39,31 +38,30 @@ function getData(idPerson) {
     // return get(storage, path);
     const dbRef = ref(database);
     
-    console.log(dbRef);
-    console.log('peppo hierba');
-
     return get(child(dbRef, `person/${idPerson}`)).then((snapshot) => {
         let data = null;
         if (snapshot.exists()) {
             data = snapshot.val();
-            console.log('SI', data);
+            // console.log('SI', data);
         } else {
             console.log("No data available");
         }
 
-        console.log('peppo hierba 2');
         return data;
     }).catch((error) => {
         console.error('error', error);
     });
 }
 
-//getData('p1');
-
 function getImage(path) {
-    return getDownloadURL(imgPerfil).then((url) => {
-        console.log('url', url);
+    return getDownloadURL(sref(storageRef, path)).then((url) => {
+        //console.log('utils-firebasels', url);
+        return url;
+    });
+}
 
+function getImageProfile() {
+    return getDownloadURL(imgPerfil).then((url) => {
         // This can be downloaded directly:
         // const xhr = new XMLHttpRequest();
         // xhr.responseType = 'blob';
@@ -73,8 +71,7 @@ function getImage(path) {
         // xhr.open('GET', url);
         // xhr.send();
 
-        console.log('utils-firebasels', url);
-
+        //console.log('utils-firebasels', url);
         return url;
     })
     // return getDownloadURL(sref(storage, path)).then((url) => {
@@ -98,6 +95,7 @@ const data = {
     imgPerfil,
     getData,
     getImage,
+    getImageProfile,
     storage,
     storageRef,
 };
