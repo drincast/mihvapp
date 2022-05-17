@@ -153,6 +153,9 @@ class App extends Component {
 
                 <Routes>
                     <Route path="/" element={<Layout />}>
+                    <Route index 
+                            element={<BulletinBoard data={this.getSkills()} animation={true} type="skill"/>}
+                        />
                         <Route path='/bulletinboar' 
                             element={<BulletinBoard data={this.getSkills()} animation={true} type="skill"/>}
                         />
