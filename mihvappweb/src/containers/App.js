@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { observer } from 'mobx-react'
 // import DevTools from 'mobx-react-devtools';
-import { Link, Redirect , Route, Switch } from 'react-router-dom';
+import { Link, Outlet, Route, Routes, Navigate } from 'react-router-dom';
 
 import DataService from '../services/DataService';
 import objStoreStates from '../storestates';
 import Header from '../components/header/header';
 import BulletinBoard from '../components/bulletinboard/bulletinboard';
-import Courses from '../components/courses/courses';
+//import Courses from '../components/courses/courses';
 
 import firebase from '../utils/firebase';
 import configApp from '../configapp.json';
@@ -15,14 +15,6 @@ import logo from '../logo.svg';
 import './App.css';
 
 let objDataService = new DataService();
-
-// const routes_ = (
-//     <div>
-//         <Route exact component={Courses} path='/courses'></Route>
-//         {/* <Route path='/bulletinboar' component={BulletinBoard}></Route> */}
-//         <Route path='/bulletinboar' component={BulletinBoard}></Route>
-//     </div>
-// )
 
 class App extends Component {  
     constructor(props){
@@ -33,7 +25,7 @@ class App extends Component {
         };
     } 
 
-    componentWillMount() {
+    componentDidMount() {
         objDataService.getDataCV()
         .then((response) => {
             this.setState({
@@ -50,14 +42,29 @@ class App extends Component {
         })        
         .catch( async err => {
             let theData = await firebase.getData('p1').then(data => { 
+                
+                this.setState({
+                    dataCV: data
+                });
+                
+                console.log("data", data, this.state);
+                objStoreStates.setSocials(data.websites);
                 return data; 
             });
+            
+            console.error(err);
+        });
 
-            this.setState({
-                dataCV: theData
-            });
-            objStoreStates.setSocials(theData.websites);
-            //console.log('estado', this.state);
+        // if ( this.state.dataCV !==
+        //         prevState.dataCV) {
+        //         console.log('el macho', this.state.dataCV);
+        // }
+
+        
+    }
+
+    async componentDidUpdate(prevProps, prevState) {
+        if ( this.state.dataCV !== prevState.dataCV) {
             // console.log(firebase.storage, `imgProfile/${configApp.defIdPerson}/${this.state.dataCV.imgProfile.url}`);
 
             // this.setState({
@@ -70,8 +77,7 @@ class App extends Component {
                 imgProfile: urlImgP
             });
             // return firebase.storageRef(`imgProfile/${configApp.defIdPerson}/${this.state.dataCV.imgProfile.url}`).getDownloadURL();
-            console.error(err);
-        });
+        }
     }
 
     //JSON.stringify(objDataService.getDataCV())
@@ -130,6 +136,12 @@ class App extends Component {
     getCourses(){
         return this.state.dataCV !== undefined ? this.state.dataCV.education.courses : null
     }
+
+    BTBOAR() {
+        return(
+            <BulletinBoard data={this.getSkills()} animation={true} type="skill"/>
+        )    
+    }
     
     render() {
         //const _urlImgProfile = this.getUrlImgProfile();
@@ -137,36 +149,39 @@ class App extends Component {
         return (
             <div className="App">
                 <Header logo={logo} altImg={this.getNamePerson()} urlImg={this.state.imgProfile} 
-                    vName={this.getVisibleName()} yourSelf={this.getYourself()} legend={this.getLegend()} />
-                <nav className="navMenu">
-                    <Link to="/bulletinboar">Skills</Link>
-                    <Link to="/courses">Cursos</Link>
-                </nav>
-                <div>
-                    {/* {routes_} */}
-                    <Switch>
-                        <Route path='/bulletinboar' render={
-                            () => <BulletinBoard data={this.getSkills()} animation={true} type="skill"/>
-                            }>
-                        </Route>
-                        {/* <Route component={Courses} path='/courses'></Route> */}
-                        <Route path='/Courses' render={
-                            () => <BulletinBoard data={this.getCourses()} type="courses"/>
-                            }>
-                        </Route>
-                        {/* <Redirect to="/bulletinboar"></Redirect> */}
-                        <Redirect to="/bulletinboar"></Redirect>
-                    </Switch>
-                </div>                
-                {/* <BulletinBoard data={this.getSkills()} animation={true}/> */}
-                
-                {/* <div>{this.state.dataCV !== undefined ? this.state.dataCV.firtsName: false}</div>
-                <div>{}</div>
-                <img src={logo} className="App-logo" alt="logo" />
-                <div onClick={this.test}>hola</div> */}
+                    vName={this.getVisibleName()} yourSelf={this.getYourself()} legend={this.getLegend()} />                
+
+                <Routes>
+                    <Route path="/" element={<Layout />}>
+                        <Route path='/bulletinboar' 
+                            element={<BulletinBoard data={this.getSkills()} animation={true} type="skill"/>}
+                        />
+                            {/* <Route component={Courses} path='/courses'></Route> */}
+                        <Route path='/courses' 
+                            element={<BulletinBoard data={this.getCourses()} type="courses"/>}
+                        />
+                        <Route element={<Navigate to="/bulletinboar"></Navigate>} />
+                    </Route>
+                </Routes>
             </div>
         );
     }
 }
+
+function Layout() {
+    return (
+        <div className="App">
+            {/* <Header logo={logo} altImg={this.getNamePerson()} urlImg={this.state.imgProfile} 
+                vName={this.getVisibleName()} yourSelf={this.getYourself()} legend={this.getLegend()} /> */}
+            <nav className="navMenu">
+                <Link to="/bulletinboar">Skills</Link>
+                <Link to="/courses">Cursos</Link>
+            </nav>
+            <div>
+                <Outlet />
+            </div>
+        </div>
+    );
+  }
 
 export default observer(App);
