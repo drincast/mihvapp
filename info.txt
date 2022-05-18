@@ -1,0 +1,60 @@
+1 - crear proyeccto firebase
+2 - agregar aplicación web (opcional web hostin)
+3 - copiar credenciales
+4 - instalar firebase -> npm install firebase (opcional -g)
+5 - istalar cliente firebase -> npm install -g firebase-tools
+6 - vincular a cuenta -> firebase login
+7 - inicial el proyecto -> firebase init
+8 - crear archivo firebase.json
+
+    {
+        "hosting": {
+            "site": "friendlychat-000",
+
+            "public": "public",
+            ...
+        }
+    }
+
+9 - asociar la aplicación a firebase -> firebase use --add
+10 - ejecutar app server de pruebas de firebase -> firebase serve --only hosting
+11 - ejecutar el webpack de aplicación si existe -> npm run start
+
+12 - desplegar sitio estatico -> firebase deploy --only hosting:friendlychat-000
+                        firebase deploy --except functions
+
+13 - En firebase se puede configurar varios hosting en el mismo proyecto
+    - Crear el nuevo hosting con un id unico global para firebase ejemplo: id-web -> [id-web]
+    - configurar destinos de implementacion para los sitios
+        - firebase target:apply hosting TARGET_NAME RESOURCE_IDENTIFIER
+    - modificar archivo de configuracion, se puede hace configuracin grupal, en hosting se define como
+        array, ejemplo
+        {
+            "hosting": {
+                "target": "wappwm",
+                "public": "01",
+                "ignore": [
+                    "firebase.json",
+                    "**/.*",
+                    "**/node_modules/**"
+                ]
+            }
+        }
+    - desplegar aplicacion
+        - firebase deploy --only hosting
+
+
+
+
+
+rules_version = '2';
+service cloud.firestore {
+    match /databases/{database}/documents {
+        match /{document=**} {
+          allow read, write: if
+              request.time < timestamp.date(2022, 6, 8);
+        }
+    }
+}
+
+//dhZ8umdniknrJVRssZ8o1G:APA91bEAJCe1zS5EnlJHgDgKry3T73XRVpPZX7m8yatne_te0FdNhgX1oK3yVlIZC8_LTTs6vzo33mpTf2bFBnMD6rxfg-Z6Bw5YTuaRSGD2mwly-900yBSCp4mqXmLwFe-8X2SEH5YR
