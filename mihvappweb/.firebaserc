@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "mihv-333"
+  },
+  "targets": {
+    "mihv-333": {
+      "hosting": {
+        "wappProfile": [
+          "mihv-333"
+        ]
+      }
+    }
   }
 }
